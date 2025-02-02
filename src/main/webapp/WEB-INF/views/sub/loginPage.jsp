@@ -26,7 +26,7 @@
             </div>
         </form>
 
-        <a class="go-join-form" href="">
+        <a class="go-join-form" href="memberJoin">
             회원가입
         </a>
     </div>
