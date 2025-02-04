@@ -11,11 +11,7 @@
     transition: all 0.3s;
 }
 
-#header .nav_m {
-    display: none;
-}
-
-#header .h-inner {
+#header .h__inner {
     height: 100%;
     width: 1300px;
     margin: 0 auto;
@@ -24,16 +20,21 @@
     align-items: center;
 }
 
-#header .h-inner .h-logo img{
+#header .h__inner .h__logo img{
     width: 130px;
 }
 
-#header .h-inner nav ul.nav-menu {
+#header .h__inner .nav__box {
     display: flex;
-    align-items: center;
 }
 
-#header .h-inner nav ul.nav-menu li {
+#header .h__inner nav ul.nav__menu {
+    display: flex;
+    align-items: center;
+    margin-right: 140px;
+}
+
+#header .h__inner nav ul.nav__menu li {
     position: relative;
     color: #102A71;
     transition: all 0.3s;
@@ -41,74 +42,50 @@
     font-weight: 600;
 }
 
-#header .h-inner nav ul.nav-menu li.nav-menu-btn:hover > a {
+#header .h__inner nav ul.nav__menu li.nav__menu__btn:hover > a {
     font-weight: bold;
     transition: all 0.3s;
 }
 
-#header .h-inner nav ul.nav-menu > li.nav-menu-btn > a {
+#header .h__inner nav ul.nav__menu > li.nav__menu__btn > a {
     padding: 31px 65px;
 }
 
-#header .h-inner nav ul.nav-menu li .sub-menu {
-    display: none;
-    position: absolute;
-    top: 50px;
-    width: 100%;
-    box-shadow: 1px;
-    background-color: #102A71;
-}
-
-#header .h-inner nav .sub-menu li {
-    text-align: center;
-}
-
-#header .h-inner nav .sub-menu li a {
-    display: inline-block;
-    text-align: center;
-    width: 100%;
-    padding: 20px 30px;
-    color: #fff;
-    transition: all 0.3s;
-}
-
-#header .h-inner nav .sub-menu li a:hover {
-    background-color: #0E235B;
-    font-weight: bold;
-    transition: all 0.3s;
-}
-
-#header .h-inner nav.pc ul.nav-menu li.nav-menu-btn:hover .sub-menu {
-    display: block;
-}
-
-
-#header .h-inner .login a {
-	display: flex;
-	align-items: center;
+#header .h__inner .login a{
     color: #3d3d3d;
+    display: flex;
+    align-items: center;
     transition: all 0.1s;
 }
 
-#header .h-inner .login a span:hover {
+#header .h__inner .login:hover a {
     font-weight: bold;
     transition: all 0.1s;
 }
+
+#header .h__inner .burger__box {
+    display: none;
+}
+
 
 @media screen and (max-width: 1300px) {
-    #header .h-inner {
-        width: 960px;
+    #header .h__inner {
+        max-width: 960px;
     }
 
-    #header .h-inner .h-logo img{
+    #header .h__inner .h-logo img{
         width: 100px;
     }
 
-    #header .h-inner nav ul.nav-menu > li.nav-menu-btn > a {
-        padding: 30px 40px;
+    #header .h__inner nav ul.nav__menu {
+        margin-right: 120px;
     }
 
-    #header .h-inner nav .sub-menu li a {
+    #header .h__inner nav ul.nav__menu > li.nav__menu__btn > a {
+        padding: 30px;
+    }
+
+    #header .h__inner nav .sub__menu li a {
         font-size: 14px;
         padding: 20px 0px;
     }
@@ -119,37 +96,51 @@
         background-color: #fff;
     }
 
-    #header .h-inner {
+    #header .h__inner {
         padding-left: 30px;
         padding-right: 30px;
         width: 100%;
     }
 
-    #header .pc {
-        display: none;
-    }
-
-    #header .nav_m {
+    #header .h__inner .burger__box {
         display: block;
     }
 
-    #header .menu {
+    #header .h__inner .nav__box {
+        display: none;
         position: absolute;
-        top: 0;
-        right: 0;
+        background-color: aliceblue;
         height: 100vh;
-        max-width: 0;
-        transition: 0.5s ease;
-        z-index: 999;
-        background-color: #ececec;
+        top: 80px;
+        left: 0;
         width: 100%;
-        margin-top: 100px;
-        margin: 0 auto;
-        color: #102A71;
-        font-size: 18px;
+        z-index: 1000;
     }
 
-    #header .burger-icon {
+    #header .h__inner .nav__box .nav__menu {
+        display: block;
+        text-align: center;
+        margin-right: 0px;
+    }
+
+    #header .h__inner nav ul.nav__menu > li.nav__menu__btn {
+        margin-bottom: 0px;
+    }
+
+    #header .h__inner nav ul.nav__menu > li.nav__menu__btn > a {
+        display: block;
+        padding: 20px;
+    }
+
+    #header .h__inner .nav__box.active {
+        display: block;
+    }
+
+    #header .burger__check:checked + .burger__icon + .nav__box {
+        display: block; /* 체크 시 메뉴 보이기 */
+    }
+
+    #header .burger__icon {
         cursor: pointer;
         display: inline-block;
         position: absolute;
@@ -161,8 +152,8 @@
         width: auto;
         margin: 0;
     }
-    
-    #header .burger-icon .burger-sticks {
+
+    #header .burger__icon .burger__sticks {
         background-color: #102A71;
         display: block;
         height: 3px;
@@ -170,9 +161,9 @@
         transition: .2s ease-out;
         width: 30px;
     }
-    
-    #header .burger-icon .burger-sticks:before,
-    #header .burger-icon .burger-sticks:after {
+
+    #header .burger__icon .burger__sticks:before,
+    #header .burger__icon .burger__sticks:after {
         background-color: #102A71;
         content: '';
         display: block;
@@ -181,37 +172,38 @@
         transition: all .2s ease-out;
         width: 100%;
     }
-    
-    #header .burger-icon .burger-sticks:before {
+
+    #header .burger__icon .burger__sticks:before {
         top: 10px;
     }
-    
-    #header .burger-icon .burger-sticks:after {
+
+    #header .burger__icon .burger__sticks:after {
         top: -10px;
     }
-    
-    #header .burger-check {
+
+    #header .burger__check {
         display: none;
     }
-    
-    #header .burger-check:checked~.menu {
+
+    #header .burger__check:checked~.pc {
         max-width: 100%;
+        display: block;
     }
-    
-    #header .burger-check:checked~.burger-icon .burger-sticks {
+
+    #header .burger__check:checked~.burger__icon .burger__sticks {
         background: transparent;
     }
-    
-    #header .burger-check:checked~.burger-icon .burger-sticks:before {
+
+    #header .burger__check:checked~.burger__icon .burger__sticks:before {
         transform: rotate(-45deg);
     }
-    
-    #header .burger-check:checked~.burger-icon .burger-sticks:after {
+
+    #header .burger__check:checked~.burger__icon .burger__sticks:after {
         transform: rotate(45deg);
     }
-    
-    #header .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:before,
-    #header .burger-check:checked~.burger-icon:not(.steps) .burger-sticks:after {
+
+    #header .burger__check:checked~.burger__icon:not(.steps) .burger__sticks:before,
+    #header .burger__check:checked~.burger__icon:not(.steps) .burger__sticks:after {
         top: 0;
     }
 
@@ -220,57 +212,9 @@
         margin-bottom: 30px;
     }
 
-    #header .menu nav .nav-menu-btn-mo {
-        margin: 0 auto;
-        text-align: center;
-        width: 100%;
-    }
-
-    #header .menu nav .nav-menu-btn-mo > a {
-        display: block;
-        padding: 20px 0;
-        width: 700px;
-        margin: 0 auto;
-        font-size: 20px;
-        font-weight: bold;
-        color: #102A71;
-    }
-
-    #header .menu nav .nav-menu-btn-mo > div {
-        display: block;
-        width: 700px;
-        margin: 0 auto;
-        color: #102A71;
-        padding-bottom: 20px;
-        border-bottom: 1px solid #102A71;
-    }
-
-    #header .menu nav .nav-menu-btn-mo .font-bo {
-        font-weight: bold;
-    }
-
-    #header .nav-menu-mo {
-        text-align: center;
-    }
-
-    #header .accordion-btn {
-        display: block;
-        cursor: pointer;
-        padding: 20px 0;
-    }
-
-    #header .accordion-menu > a {
-        width: 700px;
-        display: block;
-        font-size: 18px;
-        padding: 10px 0;
-        text-align: center;
-        color: #102A71;
-    }
-
     #header .login a {
         padding: 10px;
-        width: 700px;
+        width: 100%;
         margin: 0 auto;
     }
 
@@ -284,22 +228,10 @@
 
 @media screen and (max-width: 767px) {
     /* 525 */
-    #header .menu nav .nav-menu-btn-mo > a {
-        width: 500px;
-    }
-
-    #header .menu nav .nav-menu-btn-mo > div {
-        width: 500px;
-    }
-    
-    #header .accordion-menu > a {
-        width: 100%;
-    }
 
     #header .login a {
-        width: 500px;
+        width: 100%;
     }
-
 }
 
 @media screen and (max-width: 524px) {
@@ -307,27 +239,17 @@
         height: 60px;
     }
 
-    #header .h-inner {
+    #header .h__inner {
         padding-left: 20px;
         padding-right: 20px;
     }
 
-    #header .burger-icon {
+    #header .h__inner .nav__box {
+        top: 60px;
+    }
+
+    #header .burger__icon {
         top: 20px;
         right: 30px;
-    }
-    
-    #header .menu nav .nav-menu-btn-mo > a {
-        width: 300px;
-    }
-    
-    
-
-    #header .menu nav .nav-menu-btn-mo > div {
-        width: 300px;
-    }
-
-    #header .login a {
-        width: 300px;
     }
 }
