@@ -4,4 +4,24 @@
 
 <mapper namespace="Member">
 
+    <resultMap type="com.sunbrick.rentalrebuild.dto.MemberDTO" id="MemberDTO">
+        <id property="memberNo" column="memberNo" />
+        <result property="memberId" column="memberId" />
+        <result property="memberPassword" column="memberPassword" />
+        <result property="memberName" column="memberName" />
+        <result property="memberBirth" column="memberBirth" />
+        <result property="memberPhone" column="memberPhone" />
+        <result property="memberEmail" column="memberEmail" />
+        <result property="memberAge" column="memberAge" />
+        <result property="memberStatus" column="memberStatus" />
+    </resultMap>
+
+    <insert id="memberSave" parameterType="member">
+        INSERT INTO MEMBER(memberId, memberPassword, memberName, memberBirth, memberPhone, memberEmail, memberAge)
+        values (#{memberId}, #{memberPassword}, #{memberName}, #{memberBirth}, #{memberPhone}, #{memberEmail}, #{memberAge})
+    </insert>
+
+    <select id="checkedId" parameterType="String" resultType="member">
+        select * from member where memberId = #{memberId}
+    </select>
 </mapper>

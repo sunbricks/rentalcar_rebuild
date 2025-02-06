@@ -13,7 +13,7 @@
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/db_codingrecipe?useSSL=false&amp;serverTimezone=Asia/Seoul" />
+        <property name="url" value="jdbc:mysql://localhost:3306/db_rentcar?useSSL=false&amp;serverTimezone=Asia/Seoul" />
         <property name="username" value="rentcar"/>
         <property name="password" value="0625"/>
     </bean>
